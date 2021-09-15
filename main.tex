@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+% font setup, use Lualatex to compile!
+\usepackage{fontspec}
+%\setmainfont{Times New Roman}
+% change caption as I WANT
+\usepackage{caption}
+% add delete line
+\usepackage[normalem]{ulem}
+% page margin = 25.4mm on each side
+\usepackage[inner=2.54cm,outer=2.54cm]{geometry}
+%\setmainfont{Calibri}
+\setmainfont[
+ ExternalLocation=font/,
+ BoldFont={CalibriBold}, 
+ ItalicFont={CalibriItalic},
+ BoldItalicFont={CalibriBoldItalic}
+ ]{Calibri}
+% initialize image referencing
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+% allows the insertion of figures as A3 or A2 pages
+\usepackage[paper=A4,pagesize]{typearea}
+\usepackage{afterpage}
+% insert pdf pages
+\usepackage{pdfpages}
+% allows really loooooonnnnngggg table
+\usepackage{longtable}
+% allows landscape figure
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{lscape}
+\usepackage{float}
+% initialize clickable references
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% allow multirow and multicolumn in tables
+\usepackage{multirow}
+% reference styles
+\usepackage[style=ieee, natbib=true]{biblatex}
+\addbibresource{refs.bib}
+% appendices
+\usepackage{appendix}
+% scale large matrix, use \scalemath{}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+% initialize math tools
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{arydshln}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+% define sign convention
+\makeatletter
+
+\newcommand*\curveplus{%
+  \mathbin{\rotatebox[origin=c]{90}{$\m@th\curvearrowleft$}+}}
+
+\newcommand*\rightplus{%
+  \mathpalette\@rightplus\relax}
+\newcommand*\@rightplus[1]{%
+  \mathbin{\vcenter{\hbox{$\m@th\overset{#1+}{\to}$}}}}
+
+\newcommand*\upplus{%
+  \mathbin{+\mathord\uparrow}}
+
+\makeatother
+% add indentation
+\usepackage{tocloft}
+% remove paragraph indentations and add newlines between paragraphs
+\usepackage[parfill]{parskip}
+
+%underline
+\usepackage{soul}
+
+% Code Block
+% load package with ``framed'' and ``numbered'' option.
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+\usepackage{geometry}
+% colored background
+\usepackage[most]{tcolorbox}
+% enable the initial name field
+\usepackage{calc}
+\newlength{\mylen}
+\setlength{\mylen}{\widthof{Address for Communication}}
+\newcommand{\details}[2]{%
+\makebox[\mylen][l]{#1} \,: #2 \\
+}
+
+\begin{document}
+    \begin{titlepage}
+        \begin{tcolorbox}[colback=gray!50,enhanced,sharp corners,frame hidden,halign=center]
+        \Large\textbf{MECH4305 PROBLEM SET 1\\ Fourier Analysis and Convolution}
+        \end{tcolorbox}
+
+        \textit{\textbf{Student Details}}
+        
+        \vspace{0.15cm}
+        
+        \noindent
+        \details{First Name}{Jack}
+        \details{Family Name}{Sparrow}
+        \details{ZID}{z1234567}
+        
+        \vspace{0.3cm}
+        
+        \textbf{Total marks available = 70}
+        
+        \vspace{0.5cm}
+        
+        Marks are included in the template. \\
+        * indicates full working must be included to receive these marks. Full working must be legible. \\
+        $^{\wedge}$ indicates full MATLAB code must be included to receive these marks.
+        
+        \vspace{0.5cm}
+        
+        Figures need to be presented to a professional standard with:
+        \begin{itemize}
+            \item Axes labelled with units
+            \item Legend included where appropriate
+            \item Appropriate line styles and widths
+            \item Readable figure font style and size
+        \end{itemize}
+
+        \vspace{0.5cm}
+        
+        Suggested method for inserting your hand-written working into this template:
+        \begin{itemize}
+            \item Download the Office Lens app to your mobile device
+            \item Scan your work
+            \item Save to OneDrive 
+            \item Insert your working into this template or merge your working with this template (in pdf)
+        \end{itemize}
+
+        \vspace{0.5cm}
+
+        Upload your solution in pdf to the Moodle submission box.
+
+
+    \end{titlepage}
+    
+    \input{chapters/Q1_Force_A.tex}
+    \label{sec:Q1_Force_A}
+    \pagenumbering{arabic}
+   
+    \input{chapters/Q1_Force_B.tex}
+    \label{sec:Q1_Force_B}
+    
+    \input{chapters/Q2.tex}
+    \label{sec:Q2}
+    
+    \input{chapters/Q3_Force_A.tex}
+    \label{sec:Q3_Force_A}
+    
+    \input{chapters/Q3_Force_B.tex}
+    \label{sec:Q3_Force_B}
+
+\end{document}
